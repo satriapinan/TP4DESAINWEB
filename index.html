@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Metadata -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Satria Pinandita Abyatarsyah">
+		<meta name="description" content="Tugas Praktikum 4 mata kuliah Desain & Pemrograman Web">
+		
+		<title>TP4 - Form JS</title>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<main class="container-fluid p-5" style="background-color: #F8F9FA;">
+			<section id="Biodata" class="container-md shadow-sm p-3" style="background-color: #FFFFFF;">
+				<div class="row text-center mb-3">
+					<div class="col">
+						<h2>Biodata</h2>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-11">
+						<!-- Nama -->
+						<div class="mb-3">
+							<label for="name" class="form-label">Nama Lengkap</label>
+							<input type="text" class="form-control" id="name" aria-describedby="name" required>
+						</div>
+						<!-- Tanggal lahir -->
+						<div class="mb-3">
+							<label for="bdate" class="form-label">Tanggal Lahir</label>
+							<input type="date" class="form-control" id="bdate" aria-describedby="bdate" required>
+						</div>
+						<!-- Jenis Kelamin -->
+						<div class="mb-3">
+							<label for="gender" class="form-label">Jenis Kelamin</label>
+							<div id="gender-input">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="male" value="Laki-laki">
+									<label class="form-check-label" for="male">Laki-laki</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="female" value="Perempuan">
+									<label class="form-check-label" for="female">Perempuan</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="other-gender" value="Other">
+									<label class="form-check-label" for="other-gender">Other</label>
+								</div>
+							</div>
+						</div>
+						<!-- Hobby -->
+						<div class="mb-3">
+							<label for="hobby" class="form-label">Hobi</label>
+							<div id="hobby-input">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Ngoding" id="ngoding">
+									<label class="form-check-label" for="ngoding">Ngoding</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Rebahan" id="rebahan">
+									<label class="form-check-label" for="rebahan">Rebahan</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Melamun" id="melamun">
+									<label class="form-check-label" for="melamun">Melamun</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Baca Buku" id="baca">
+									<label class="form-check-label" for="baca">Baca Buku</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Nonton Youtube" id="nontonYtb">
+									<label class="form-check-label" for="nontonYtb">Nonton Youtube</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Dengerin Lagu" id="dengerLagu">
+									<label class="form-check-label" for="dengerLagu">Dengerin Lagu</label>
+								</div>
+								<div class="form-check form-check-inline">
+									<input class="form-check-input" type="checkbox" value="Other" id="other-hobby">
+									<label class="form-check-label" for="other-hobby">Other</label>
+								</div>
+							</div>
+						</div>
+						<!-- Agam -->
+						<div class="mb-3">
+							<label for="religion" class="form-label">Agama</label>
+							<select class="form-select" id="religion">
+								<option value="Islam">Islam</option>
+								<option value="Kristen">Kristen</option>
+								<option value="Katolik">Katolik</option>
+								<option value="Budha">Budha</option>
+								<option value="Hindu">Hindu</option>
+							</select>
+						</div>
+						<!-- Pesan -->
+						<div class="mb-3">
+							<label for="message" class="form-label">Pesan</label>
+							<textarea class="form-control" id="message" rows="5"></textarea>
+						</div>
+						<!-- Submit -->
+						<button type="submit" class="btn btn-primary" onclick="display()">Submit</button>
+						<!-- Display Value -->
+						<table class="table mt-5" id="table" style="display: none;">
+							<thead>
+								<tr>
+									<th scope="col">Label</th>
+									<th scope="col">Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Nama</th>
+									<td id="displayName"></td>
+								</tr>
+								<tr>
+									<th scope="row">Tanggal Lahir</th>
+									<td id="displayBdate"></td>
+								</tr>
+								<tr>
+									<th scope="row">Jenis Kelamin</th>
+									<td id="displayGender"></td>
+								</tr>
+								<tr>
+									<th scope="row">Hobi</th>
+									<td id="displayHobby"></td>
+								</tr>
+								<tr>
+									<th scope="row">Agama</th>
+									<td id="displayReligion"></td>
+								</tr>
+								<tr>
+									<th scope="row">Pesan</th>
+									<td id="displayMessage"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script type="text/javascript">
+			function display() {
+				// value nama
+				var name = document.getElementById("name").value;
+				// value tanggal lahir
+				var bdate = document.getElementById("bdate").value;
+				// value gender
+				var gender = document.querySelector('input[name="gender"]:checked').value;
+				// value hobby
+				var hobby = ""
+				var checkHobby = document.querySelectorAll('input[type=checkbox]:checked')
+				for (var i = 0; i < checkHobby.length; i++) {
+					hobby = hobby + checkHobby[i].value;
+					if(i < checkHobby.length-1) {
+						hobby = hobby + ', '
+					}
+				}
+				// value agama
+				var religion = document.getElementById("religion").value;
+				// value pesan
+				var message = document.getElementById("message").value;
+
+				// Display Value by Id
+				document.getElementById("displayName").innerHTML     = name;
+				document.getElementById("displayBdate").innerHTML    = bdate;
+				document.getElementById("displayGender").innerHTML   = gender;
+				document.getElementById("displayHobby").innerHTML    = hobby;
+				document.getElementById("displayReligion").innerHTML = religion;
+				document.getElementById("displayMessage").innerHTML  = message;
+				
+				// Display Table
+				document.getElementById("table").style.display = "table";
+			}
+		</script>
+	</body>
+</html>
